@@ -41,8 +41,19 @@ object ExosListes extends App {
    * @param l une liste d'entiers quelconque
    * @return vrai si et seulement si l est triée dans l'ordre croissant
    */
-  // TODO 
-  def estTriee(l: List[Int]): Boolean = ???
+
+  def estTriee(l: List[Int]): Boolean = {
+    l match {
+      case Nil => true
+      case _ :: Nil => true
+      case first :: second :: rest => if (first <= second) {
+        estTriee(List(second) ++ rest)
+      } else {
+        false
+      }
+    }
+  }
+
 
   /**
    * @param l1 une liste d'entiers
@@ -50,5 +61,10 @@ object ExosListes extends App {
    * @return l2 est la version de l1 triée
    */
   // TODO
-  def versionTriee(l1: List[Int], l2: List[Int]): Boolean = ???
+  def versionTriee(l1: List[Int], l2: List[Int]): Boolean = {
+    l2 match {
+      case triInsertion(l1) => true
+      case _ => false
+    }
+  }
 }

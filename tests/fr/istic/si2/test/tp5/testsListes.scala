@@ -20,6 +20,7 @@ class TestsExosListes {
   def nfois0Test() {
     assertEquals(List(), nfois(0, 1))
   }
+
   /**
    * Test de la fonction nfois : Liste remplie de 1 de taille 1
    */
@@ -27,6 +28,7 @@ class TestsExosListes {
   def nfois1Test() {
     assertEquals(List(1), nfois(1, 1))
   }
+
   /**
    * Test de la fonction nfois : Liste remplie de 1 de taille 2
    */
@@ -36,8 +38,6 @@ class TestsExosListes {
   }
 
 
-
-
   /**
    * Test de la fonction concat : produit une chaine de caractère video
    */
@@ -45,6 +45,7 @@ class TestsExosListes {
   def concat0Test() {
     assertEquals("", concat(List()))
   }
+
   /**
    * Test de la fonction concat : produit la chaine de caractère first (1 elements)
    */
@@ -52,6 +53,7 @@ class TestsExosListes {
   def concat1Test() {
     assertEquals("first", concat(List("first")))
   }
+
   /**
    * Test de la fonction concat : produit la chaine de caractère firstsecond (2 elements)
    */
@@ -59,6 +61,7 @@ class TestsExosListes {
   def concat2Test() {
     assertEquals("firstsecond", concat(List("first", "second")))
   }
+
   /**
    * Test de la fonction concat : produit la chaine de caractère firstsecondthird (3 elements)
    */
@@ -67,6 +70,49 @@ class TestsExosListes {
     assertEquals("firstsecondthird", concat(List("first", "second", "third")))
   }
 
+
+  @Test(timeout = 100)
+  def testEstTrieeEmptyList() {
+    assertEquals(true, estTriee(List()))
+  }
+
+  @Test(timeout = 100)
+  def testEstTrieeOneElementList() {
+    assertEquals(true, estTriee(List(1)))
+  }
+
+  @Test(timeout = 100)
+  def testEstTrieeTwoElementListVALID() {
+    assertEquals(true, estTriee(List(1, 2)))
+  }
+
+  @Test(timeout = 100)
+  def testEstTrieeTwoElementListINVALID() {
+    assertEquals(false, estTriee(List(5, 2)))
+  }
+
+  @Test(timeout = 100)
+  def testEstTrieeThreeElementListVALID() {
+    assertEquals(true, estTriee(List(1, 2, 3)))
+  }
+
+  @Test(timeout = 100)
+  def testEstTrieeThreeElementListINVALID() {
+    assertEquals(false, estTriee(List(12, 5, 2)))
+  }
+
+  @Test(timeout = 100)
+  def testEstTrieeSameElementsSomeVALID() {
+    assertEquals(true, estTriee(List(1, 2, 2, 3, 3)))
+  }
+  @Test(timeout = 100)
+  def testEstTrieeSameElementsSomeINVALID() {
+    assertEquals(false, estTriee(List(12, 12, 2, 3, 3)))
+  }
+  @Test(timeout = 100)
+  def testEstTrieeSameElementsAllVALID() {
+    assertEquals(true, estTriee(List(2, 2, 2, 2, 2)))
+  }
 
 
 }
